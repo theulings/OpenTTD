@@ -1,3 +1,19 @@
+# About This Fork
+This Forks adds a ‘mod’ to OpenTTD (currently version 1.10.0) to include seamless saving and loading of company passwords for dedicated servers, meaning company passwords are remembered after your server restarts.
+
+Passwords are stored in text files alongside your other OpenTTD save files, with the added file extension ‘.p’.
+
+While most players should already be aware not to use passwords they use for anything else as an OpenTTD company password, it is well worth making sure they are absolutely aware of this. It is also worth making sure that the user on the system running the server should be the only account with read and write permissions to the password save files.
+
+To build this fork you can follow the ordinary build instructions detailed in the OpenTTD docs below, however you should remember that the build scripts take the game version from the git commit and you should prepare your build directory to target a specific release if you want people using ‘official’ releases of the game to join your server.
+
+This mod is not supported, moderated or promoted in any way by the OpenTTD team.
+
+This mod falls under the GPLv2 license.
+
+You can see this mod in action at https://ketchup.games/ttd
+
+
 # OpenTTD
 
 ## Table of contents
