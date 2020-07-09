@@ -62,4 +62,5 @@ void saveLoadCompanyPwords::load()
 
         pWord += ch;
     }
+    FioFCloseFile(passFile);
 }
