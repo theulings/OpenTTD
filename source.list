@@ -646,6 +646,7 @@ saveload/subsidy_sl.cpp
 saveload/town_sl.cpp
 saveload/vehicle_sl.cpp
 saveload/waypoint_sl.cpp
+saveload/companyPasswords.cpp
 
 # Tables
 table/airport_defaults.h

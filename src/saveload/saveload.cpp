@@ -52,6 +52,8 @@
 
 #include "../safeguards.h"
 
+#include "companyPasswords.h"
+
 extern const SaveLoadVersion SAVEGAME_VERSION = (SaveLoadVersion)(SL_MAX_VERSION - 1); ///< Current savegame version of OpenTTD.
 
 SavegameType _savegame_type; ///< type of savegame we are loading
@@ -2794,7 +2796,8 @@ SaveOrLoadResult SaveOrLoad(const char *filename, SaveLoadOperation fop, Detaile
 		}
 
 		if (fop == SLO_SAVE) { // SAVE game
-			DEBUG(desync, 1, "save: %08x; %02x; %s", _date, _date_fract, filename);
+			saveLoadCompanyPwords::save(filename, sb);
+            DEBUG(desync, 1, "save: %08x; %02x; %s", _date, _date_fract, filename);
 			if (_network_server || !_settings_client.gui.threaded_saves) threaded = false;
 
 			return DoSave(new FileWriter(fh), threaded);
@@ -2803,6 +2806,11 @@ SaveOrLoadResult SaveOrLoad(const char *filename, SaveLoadOperation fop, Detaile
 		/* LOAD game */
 		assert(fop == SLO_LOAD || fop == SLO_CHECK);
 		DEBUG(desync, 1, "load: %s", filename);
+       
+       //Set paths for company password loading (We don't actually load them until later)
+        saveLoadCompanyPwords::filename = filename + std::string(".p");
+        saveLoadCompanyPwords::subDir = sb;
+	
 		return DoLoad(new FileReader(fh), fop == SLO_CHECK);
 	} catch (...) {
 		/* This code may be executed both for old and new save games. */
