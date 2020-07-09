@@ -1,5 +1,5 @@
 # About This Fork
-This Forks adds a ‘mod’ to OpenTTD (currently version 1.10.0) to include seamless saving and loading of company passwords for dedicated servers, meaning company passwords are remembered after your server restarts.
+This Forks adds a ‘mod’ to OpenTTD (currently version 1.10.2) to include seamless saving and loading of company passwords for dedicated servers, meaning company passwords are remembered after your server restarts.
 
 Passwords are stored in text files alongside your other OpenTTD save files, with the added file extension ‘.p’.
 
