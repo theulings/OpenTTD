@@ -1,11 +1,11 @@
 # About This Fork
-This Forks adds a ‘mod’ to OpenTTD (currently version 1.10.2) to include seamless saving and loading of company passwords for dedicated servers, meaning company passwords are remembered after your server restarts.
+This Forks adds a ‘mod’ to OpenTTD (currently version 1.10.3) to include seamless saving and loading of company passwords for dedicated servers, meaning company passwords are remembered after your server restarts.
 
 Passwords are stored in text files alongside your other OpenTTD save files, with the added file extension ‘.p’.
 
 While most players should already be aware not to use passwords they use for anything else as an OpenTTD company password, it is well worth making sure they are absolutely aware of this. It is also worth making sure that the user on the system running the server should be the only account with read and write permissions to the password save files.
 
-To build this fork you can follow the ordinary build instructions detailed in the OpenTTD docs below, however you should remember that the build scripts take the game version from the git commit and you should prepare your build directory to target a specific release if you want people using ‘official’ releases of the game to join your server.
+To build this fork you can follow the ordinary build instructions detailed in the OpenTTD docs below, however you should remember that the build scripts take the game version from the git commit and you should prepare your build directory to target a specific release if you want people using ‘official’ releases of the game to join your server. See additional build notes below.
 
 This mod is not supported, moderated or promoted in any way by the OpenTTD team.
 
@@ -13,6 +13,32 @@ This mod falls under the GPLv2 license.
 
 You can see this mod in action at https://ketchup.games/ttd
 
+## Additional build notes for this fork
+When connecting to a server OpenTTD makes a few version checks to make sure the server it is connecting to is fully compatible. As our fork doesn’t change anything big it should be fully compatible with the official release, but when we build the fork we must satisfy the version checks so players running the official binaries can still connect. Though it is a bit of a nasty hack I have found the easiest way to do this is to replace our fork’s .git directory with the .git directory from the official release. This can be done as follows…
+
+a) Clone our fork,
+```bash
+git clone https://github.com/theulings/OpenTTD.git forkedTTD
+```
+
+b) Clone the official OpenTTD release (Change tag to latest release),
+```bash
+git clone https://github.com/OpenTTD/OpenTTD officialTTD
+cd officialTTD
+git checkout tags/1.10.3
+cd ..
+```
+c) Copy the .git directory from the official OpenTTD release into our forked release,
+```bash
+rm -rf forkedTTD/.git
+cp -r officialTTD/.git forkedTTD
+```
+d) Build the fork following COMPILING.md instructions.
+```bash
+cd forkedTTD
+./configure
+maked
+```
 
 # OpenTTD
 
